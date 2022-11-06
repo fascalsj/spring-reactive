@@ -1,0 +1,11 @@
+server:
+    port: 8083
+spring:
+    r2dbc:
+        url : r2dbc:postgresql://localhost:5432/postgres?schema=public
+        username: postgres
+        password: password
+logging:
+    level:
+        io.r2dbc.postgresql.QUERY: DEBUG
+        io.r2dbc.postgresql.PARAM: DEBUG

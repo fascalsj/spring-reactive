@@ -2,7 +2,7 @@ server:
     port: 8083
 spring:
     r2dbc:
-        url : r2dbc:postgresql://localhost:5432/postgres?schema=public
+        url : r2dbc:postgresql://localhost:5432/postgres?schema=dodol
         username: postgres
         password: password
 logging:

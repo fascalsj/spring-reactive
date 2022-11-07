@@ -11,17 +11,20 @@ import java.util.Date;
 @RequiredArgsConstructor
 public class PersonService {
     private final PersonRepository personRepository;
+    private final PersonMapper personMapper;
 
-    Mono<Person> getPersonById(String id){
+    Mono<Person> getPersonById(String id) {
         return personRepository.findById(id);
     }
 
-    Flux<Person> getByBetweenDate(){
+    Flux<PersonDto> getByBetweenDate() {
         Date newDate = new Date();
-        return personRepository.findByComingDateBetween(newDate, newDate);
+        return personRepository.findByComingDateBetween(newDate, newDate).flatMap(person ->
+             Flux.just(personMapper.personToPersonDto(person))
+        );
     }
 
-    Flux<Person> getByBetweenDateOrderDesc(){
+    Flux<Person> getByBetweenDateOrderDesc() {
         Date newDate = new Date();
         return personRepository.findByComingDateBetweenOrderByComingDateDesc(newDate, newDate);
     }

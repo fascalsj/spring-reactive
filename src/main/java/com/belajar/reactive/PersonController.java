@@ -15,19 +15,18 @@ public class PersonController {
     private final PersonService personService;
 
     @GetMapping
-    public Mono<Person> getPerson(){
+    public Mono<Person> getPerson() {
         return personService.getPersonById("A");
     }
 
     @GetMapping("/between")
-    public Flux<Person> getPersonByDuration(){
+    public Flux<PersonDto> getPersonByDuration() {
         return personService.getByBetweenDate();
     }
 
 
     @GetMapping("/between-order")
-    public Flux<Person> getPersonByDurationOrderDesc(){
+    public Flux<Person> getPersonByDurationOrderDesc() {
         return personService.getByBetweenDateOrderDesc();
     }
-
 }
